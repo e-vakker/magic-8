@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct MagicTriangle: View {
+    @ObservedObject var motion:MotionManager
+    
     @State private var text = "Ask a question and shake".uppercased()
-    @State private var degress = 0.0
-    @StateObject private var motion = MotionManager()
+    @State private var degrees = 0.0
+    
+    @State private var colorFill = LinearGradient(gradient: Gradient(colors: [
+        Color(hue: 0.68, saturation: 0.819, brightness: 0.658),
+        Color(hue: 0.68, saturation: 0.5, brightness: 0.658)
+    ]), startPoint: .bottom, endPoint: .top)
+    
+    
     
     var body: some View {
         ZStack {
@@ -22,7 +30,7 @@ struct MagicTriangle: View {
             }
             ZStack {
                 Triangle()
-                    .fill(Color(hue: 0.68, saturation: 0.819, brightness: 0.658))
+                    .fill(colorFill)
                     .frame(width: 250, height: 220)
                     .shadow(color: Color(hue: 0.666, saturation: 0.993, brightness: 0.934), radius: 40, x: 0, y: 0)
                     .blur(radius: 0.5)
@@ -34,26 +42,32 @@ struct MagicTriangle: View {
                     .padding(.bottom, 60.0)
                     .frame(width: 130, height: 250)
             }
-            .rotation3DEffect(.degrees(degress), axis: (x:0, y: 1, z: 0))
-            .rotation3DEffect(.degrees(motion.x * 10), axis: (x: 0, y: 0, z: 1))
-            .rotation3DEffect(.degrees(motion.y * 10), axis: (x: 1, y: 0, z: 0))
-            .padding(.leading, motion.x * 70)
-            .padding(.top, motion.y * 70)
-            .onShake {
-                text = randomAnswer()
-                vibrationSuccess()
-                withAnimation {
-                    self.degress += 1440
+            .rotation3DEffect(.degrees(degrees), axis: (x:0, y: 1, z: 0))
+            .rotation3DEffect(.degrees(motion.y * 12), axis: (x: 0, y: -1, z: 0))
+            .rotation3DEffect(.degrees(motion.x * 10), axis: (x: 1, y: 0, z: 0))
+            .padding(.leading, motion.y * 45)
+            .padding(.top, motion.x * 45)
+            .onChange(of: motion.didShake) { shake in
+                if shake {
+                    text = randomAnswer()
+                    withAnimation {
+                        self.degrees += 360
+                        vibrationSuccess()
+                    }
                 }
-                
+            }
+            .onChange(of: motion.x) { _ in
+                colorFill = LinearGradient(gradient: Gradient(colors: [
+                    Color(hue: 0.68, saturation: 0.819, brightness: 0.658 + (motion.x + motion.y) / 4),
+                    Color(hue: 0.68, saturation: 0.5, brightness: 0.658 + (motion.x + motion.y) / 4)
+                ]), startPoint: .bottom, endPoint: .top)
             }
         }
-        
     }
-}
-
-struct MagicTriangle_Previews: PreviewProvider {
-    static var previews: some View {
-        MagicTriangle()
+    
+    struct MagicTriangle_Previews: PreviewProvider {
+        static var previews: some View {
+            MagicTriangle(motion: MotionManager())
+        }
     }
 }

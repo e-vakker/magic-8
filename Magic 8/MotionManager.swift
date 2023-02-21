@@ -13,14 +13,33 @@ class MotionManager: ObservableObject {
     @Published var x = 0.0
     @Published var y = 0.0
     @Published var z = 0.0
+    @Published var didShake = false
     
-    init () {
-        motionManager.startDeviceMotionUpdates(to: .main) { [weak self] data, error in
-            guard let motion = data?.attitude else { return }
-            self?.x = motion.roll
-            self?.y = motion.pitch
-            self?.z = motion.yaw
-        }
+    
+    func stopDeviceMotionUpdates() {
+        motionManager.stopDeviceMotionUpdates()
     }
     
+    func startDeviceMotionUpdates() {
+        motionManager.startDeviceMotionUpdates(to: .main) { [weak self] data, error in
+            guard let motion = data?.attitude else { return }
+            self?.x = motion.pitch
+            self?.y = motion.roll
+            self?.z = motion.yaw
+            
+            if let acceleration = data?.userAcceleration {
+                let accelerationThreshold: Double = 2
+                
+                if abs(acceleration.x) > accelerationThreshold
+                    || abs(acceleration.y) > accelerationThreshold
+                    || abs(acceleration.z) > accelerationThreshold {
+                    
+                    self?.didShake = true
+                }
+                else {
+                    self?.didShake = false
+                }
+            }
+        }
+    }
 }

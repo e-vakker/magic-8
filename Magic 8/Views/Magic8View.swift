@@ -11,6 +11,11 @@ import CoreMotion
 struct Magic8View: View {
     // Switching screens with a magic triangle and information about the application
     @State var showAbout: Bool = false
+    
+    @StateObject private var motion = MotionManager()
+    
+    @Environment(\.scenePhase) var scenePhase
+    
     var body: some View {
         VStack {
             if showAbout {
@@ -21,7 +26,7 @@ struct Magic8View: View {
                         }
                     }
             } else {
-                MagicTriangle()
+                MagicTriangle(motion: motion)
                     .onLongPressGesture {
                         withAnimation {
                             showAbout.toggle()
@@ -29,7 +34,18 @@ struct Magic8View: View {
                     }
             }
         }
-        
+        .onChange(of: scenePhase) { newScenePhase in
+            switch newScenePhase {
+            case .background:
+                motion.stopDeviceMotionUpdates()
+            case .inactive:
+                motion.stopDeviceMotionUpdates()
+            case.active:
+                motion.startDeviceMotionUpdates()
+            @unknown default:
+                break
+            }
+        }
     }
 }
 

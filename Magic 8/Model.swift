@@ -29,7 +29,27 @@ let answers = [
     "My reply is no",
     "My sources say no",
     "Outlook not so good",
-    "Very doubtful"
+    "Very doubtful",
+    "It is impossible to predict now",
+    "The outcome is unclear",
+    "I'm not sure, ask again",
+    "Focus and try again",
+    "It's unlikely",
+    "Better luck next time",
+    "The signs point to no",
+    "Highly doubtful",
+    "Maybe, but unlikely",
+    "The outlook is not good",
+    "My sources say maybe",
+    "Don't bet on it",
+    "It's a long shot",
+    "Try again tomorrow",
+    "The answer is within you",
+    "You already know the answer",
+    "It's not looking good",
+    "Ask a different question",
+    "The stars are not aligned",
+    "Ask again in a week"
 ]
 
 // Output a random answer
@@ -41,6 +61,7 @@ func randomAnswer() -> String {
 // Vibration of the phone
 func vibrationSuccess() {
     let generator = UINotificationFeedbackGenerator()
+    generator.prepare()
     generator.notificationOccurred(.success)
 }
 

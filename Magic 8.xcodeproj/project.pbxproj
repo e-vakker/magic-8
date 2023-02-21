@@ -15,7 +15,6 @@
 		EC413EDA28BFFE2D00EB1334 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC413ED928BFFE2D00EB1334 /* Model.swift */; };
 		EC413EDC28C3800000EB1334 /* MagicTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC413EDB28C3800000EB1334 /* MagicTriangle.swift */; };
 		EC413EE028C387DA00EB1334 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC413EDF28C387DA00EB1334 /* MotionManager.swift */; };
-		EC413EE828C3DBB300EB1334 /* SwiftUIShakeGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC413EE728C3DBB300EB1334 /* SwiftUIShakeGesture.swift */; };
 		EC413EEC28CA704F00EB1334 /* AboutMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC413EEB28CA704F00EB1334 /* AboutMe.swift */; };
 		EC96F7F028CE703300803E13 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC96F7EF28CE703300803E13 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
@@ -30,7 +29,6 @@
 		EC413ED928BFFE2D00EB1334 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		EC413EDB28C3800000EB1334 /* MagicTriangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicTriangle.swift; sourceTree = "<group>"; };
 		EC413EDF28C387DA00EB1334 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
-		EC413EE728C3DBB300EB1334 /* SwiftUIShakeGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIShakeGesture.swift; sourceTree = "<group>"; };
 		EC413EEB28CA704F00EB1334 /* AboutMe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMe.swift; sourceTree = "<group>"; };
 		EC96F7EF28CE703300803E13 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,7 +63,6 @@
 		EC413EC728BFDF0F00EB1334 /* Magic 8 */ = {
 			isa = PBXGroup;
 			children = (
-				EC413EE728C3DBB300EB1334 /* SwiftUIShakeGesture.swift */,
 				EC413EDF28C387DA00EB1334 /* MotionManager.swift */,
 				EC413ED628BFE7F600EB1334 /* Triangle.swift */,
 				EC413ED928BFFE2D00EB1334 /* Model.swift */,
@@ -173,7 +170,6 @@
 				EC413ECB28BFDF0F00EB1334 /* Magic8View.swift in Sources */,
 				EC413EC928BFDF0F00EB1334 /* Magic_8App.swift in Sources */,
 				EC413EEC28CA704F00EB1334 /* AboutMe.swift in Sources */,
-				EC413EE828C3DBB300EB1334 /* SwiftUIShakeGesture.swift in Sources */,
 				EC413EDC28C3800000EB1334 /* MagicTriangle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
