@@ -12,11 +12,11 @@ struct AboutMe: View {
     var body: some View {
         ZStack{
             VStack {
-                Text("Magic 8 iPhone")
-                    .font(.title2)
+                Text("Magic 8")
+                    .font(.title)
                     .fontWeight(.bold)
                 Text("Final Project for CS50")
-                    .font(.title3)
+                    .font(.title2)
                     .foregroundColor(Color.gray)
                 Text("")
                 Text("Thanks: hackingwithswift.com")
